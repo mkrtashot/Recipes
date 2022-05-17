@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import fetchUser from '../../helpers/fetchUser';
 import { loginUser } from '../../state/features/userSlice/userSlice';
 
 export default function LoginForm() {
@@ -21,14 +22,12 @@ export default function LoginForm() {
 	const dispatch = useDispatch();
 
 	function handleLogin() {
-		fetch('http://localhost:4000/login', {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ username: myUsername, password: myPassword }),
-		})
+		const sendingData = {
+			username: myUsername,
+			password: myPassword,
+		};
+
+		fetchUser('login', sendingData)
 			.then((res) => res.json())
 			.then((result) => {
 				if (result === 'wrong') {
