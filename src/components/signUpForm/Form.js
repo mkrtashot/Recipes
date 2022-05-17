@@ -14,23 +14,25 @@ export default function Form() {
 			.then((res) => {
 				setUserData(res);
 			});
-	}, [usernameTest, emailTest]);
+	}, []);
 
 	useEffect(() => {
-		userData.forEach((it) => {
-			if (usernameTest === it.username) {
+		for (let i = 0; i < userData.length; i++) {
+			if (usernameTest === userData[i].username) {
 				setUsernameRepeated(true);
+				break;
 			} else {
 				setUsernameRepeated(false);
 			}
 
-			if (emailTest === it.email) {
+			if (emailTest === userData[i].email) {
 				setEmailRepeated(true);
+				break;
 			} else {
 				setEmailRepeated(false);
 			}
-		});
-	});
+		}
+	}, [usernameTest, emailTest]);
 
 	return (
 		<>
