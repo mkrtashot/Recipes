@@ -14,7 +14,7 @@ export default function Form() {
 			.then((res) => {
 				setUserData(res);
 			});
-	}, []);
+	}, [usernameTest, emailTest]);
 
 	useEffect(() => {
 		userData.forEach((it) => {
