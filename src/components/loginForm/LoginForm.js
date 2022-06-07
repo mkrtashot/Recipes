@@ -15,7 +15,7 @@ export default function LoginForm() {
 
 	useEffect(() => {
 		if (user.username) {
-			navigate('/');
+			navigate('/recipes');
 		}
 	}, [user]);
 
